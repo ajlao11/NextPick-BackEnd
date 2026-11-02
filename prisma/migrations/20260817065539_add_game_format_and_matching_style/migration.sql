@@ -1,0 +1,9 @@
+-- CreateEnum
+CREATE TYPE "GameFormat" AS ENUM ('SINGLES', 'DOUBLES');
+
+-- CreateEnum
+CREATE TYPE "MatchingStyle" AS ENUM ('RANDOM_ROUND_ROBIN', 'WINNERS_LOSERS', 'KING_OF_THE_COURT', 'WINNER_STAYS', 'BALANCED_SKILL');
+
+-- AlterTable
+ALTER TABLE "Session" ADD COLUMN     "gameFormat" "GameFormat" NOT NULL DEFAULT 'DOUBLES',
+ADD COLUMN     "matchingStyle" "MatchingStyle" NOT NULL DEFAULT 'RANDOM_ROUND_ROBIN';

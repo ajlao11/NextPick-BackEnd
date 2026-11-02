@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: nextpick-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nextpick
+      POSTGRES_PASSWORD: nextpick
+      POSTGRES_DB: nextpick
+    ports:
+      - "15432:5432"
+    volumes:
+      - nextpick_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  nextpick_postgres_data:
