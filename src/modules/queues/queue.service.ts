@@ -1,3 +1,4 @@
+
 import {
   Injectable,
   NotFoundException,
@@ -9,7 +10,7 @@ import { PrismaService } from '../../prisma/prisma.service';
 export class QueueService {
   constructor(
     private readonly prisma: PrismaService,
-  ) { }
+  ) {}
 
   async findAll(sessionId: string) {
     const session = await this.prisma.session.findUnique({
@@ -53,6 +54,7 @@ export class QueueService {
       }),
     ]);
 
+    // Count completed games for each player.
     const matchCount = new Map<string, number>();
 
     for (const match of completedMatches) {
@@ -64,7 +66,8 @@ export class QueueService {
       }
     }
 
-    return entries.sort((a, b) => {
+    // Preserve the existing fair queue priority.
+    const sortedEntries = entries.sort((a, b) => {
       const aGames =
         matchCount.get(a.sessionPlayer.playerId) ?? 0;
 
@@ -77,5 +80,12 @@ export class QueueService {
 
       return a.position - b.position;
     });
+
+    // Include games played in the API response.
+    return sortedEntries.map((entry) => ({
+      ...entry,
+      gamesPlayed:
+        matchCount.get(entry.sessionPlayer.playerId) ?? 0,
+    }));
   }
 }

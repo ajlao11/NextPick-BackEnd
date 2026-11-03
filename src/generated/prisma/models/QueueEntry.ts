@@ -42,6 +42,7 @@ export type QueueEntryMinAggregateOutputType = {
   status: $Enums.QueueStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  waitingSince: Date | null
 }
 
 export type QueueEntryMaxAggregateOutputType = {
@@ -52,6 +53,7 @@ export type QueueEntryMaxAggregateOutputType = {
   status: $Enums.QueueStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  waitingSince: Date | null
 }
 
 export type QueueEntryCountAggregateOutputType = {
@@ -62,6 +64,7 @@ export type QueueEntryCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  waitingSince: number
   _all: number
 }
 
@@ -82,6 +85,7 @@ export type QueueEntryMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  waitingSince?: true
 }
 
 export type QueueEntryMaxAggregateInputType = {
@@ -92,6 +96,7 @@ export type QueueEntryMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  waitingSince?: true
 }
 
 export type QueueEntryCountAggregateInputType = {
@@ -102,6 +107,7 @@ export type QueueEntryCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  waitingSince?: true
   _all?: true
 }
 
@@ -199,6 +205,7 @@ export type QueueEntryGroupByOutputType = {
   status: $Enums.QueueStatus
   createdAt: Date
   updatedAt: Date
+  waitingSince: Date
   _count: QueueEntryCountAggregateOutputType | null
   _avg: QueueEntryAvgAggregateOutputType | null
   _sum: QueueEntrySumAggregateOutputType | null
@@ -232,6 +239,7 @@ export type QueueEntryWhereInput = {
   status?: Prisma.EnumQueueStatusFilter<"QueueEntry"> | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
+  waitingSince?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
   session?: Prisma.XOR<Prisma.SessionScalarRelationFilter, Prisma.SessionWhereInput>
   sessionPlayer?: Prisma.XOR<Prisma.SessionPlayerScalarRelationFilter, Prisma.SessionPlayerWhereInput>
 }
@@ -244,6 +252,7 @@ export type QueueEntryOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  waitingSince?: Prisma.SortOrder
   session?: Prisma.SessionOrderByWithRelationInput
   sessionPlayer?: Prisma.SessionPlayerOrderByWithRelationInput
 }
@@ -260,6 +269,7 @@ export type QueueEntryWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumQueueStatusFilter<"QueueEntry"> | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
+  waitingSince?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
   session?: Prisma.XOR<Prisma.SessionScalarRelationFilter, Prisma.SessionWhereInput>
   sessionPlayer?: Prisma.XOR<Prisma.SessionPlayerScalarRelationFilter, Prisma.SessionPlayerWhereInput>
 }, "id" | "sessionPlayerId" | "sessionId_position">
@@ -272,6 +282,7 @@ export type QueueEntryOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  waitingSince?: Prisma.SortOrder
   _count?: Prisma.QueueEntryCountOrderByAggregateInput
   _avg?: Prisma.QueueEntryAvgOrderByAggregateInput
   _max?: Prisma.QueueEntryMaxOrderByAggregateInput
@@ -290,6 +301,7 @@ export type QueueEntryScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumQueueStatusWithAggregatesFilter<"QueueEntry"> | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"QueueEntry"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"QueueEntry"> | Date | string
+  waitingSince?: Prisma.DateTimeWithAggregatesFilter<"QueueEntry"> | Date | string
 }
 
 export type QueueEntryCreateInput = {
@@ -298,6 +310,7 @@ export type QueueEntryCreateInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
   session: Prisma.SessionCreateNestedOneWithoutQueueEntriesInput
   sessionPlayer: Prisma.SessionPlayerCreateNestedOneWithoutQueueEntryInput
 }
@@ -310,6 +323,7 @@ export type QueueEntryUncheckedCreateInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
 }
 
 export type QueueEntryUpdateInput = {
@@ -318,6 +332,7 @@ export type QueueEntryUpdateInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   session?: Prisma.SessionUpdateOneRequiredWithoutQueueEntriesNestedInput
   sessionPlayer?: Prisma.SessionPlayerUpdateOneRequiredWithoutQueueEntryNestedInput
 }
@@ -330,6 +345,7 @@ export type QueueEntryUncheckedUpdateInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type QueueEntryCreateManyInput = {
@@ -340,6 +356,7 @@ export type QueueEntryCreateManyInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
 }
 
 export type QueueEntryUpdateManyMutationInput = {
@@ -348,6 +365,7 @@ export type QueueEntryUpdateManyMutationInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type QueueEntryUncheckedUpdateManyInput = {
@@ -358,6 +376,7 @@ export type QueueEntryUncheckedUpdateManyInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type QueueEntryListRelationFilter = {
@@ -388,6 +407,7 @@ export type QueueEntryCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  waitingSince?: Prisma.SortOrder
 }
 
 export type QueueEntryAvgOrderByAggregateInput = {
@@ -402,6 +422,7 @@ export type QueueEntryMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  waitingSince?: Prisma.SortOrder
 }
 
 export type QueueEntryMinOrderByAggregateInput = {
@@ -412,6 +433,7 @@ export type QueueEntryMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  waitingSince?: Prisma.SortOrder
 }
 
 export type QueueEntrySumOrderByAggregateInput = {
@@ -502,6 +524,7 @@ export type QueueEntryCreateWithoutSessionInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
   sessionPlayer: Prisma.SessionPlayerCreateNestedOneWithoutQueueEntryInput
 }
 
@@ -512,6 +535,7 @@ export type QueueEntryUncheckedCreateWithoutSessionInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
 }
 
 export type QueueEntryCreateOrConnectWithoutSessionInput = {
@@ -551,6 +575,7 @@ export type QueueEntryScalarWhereInput = {
   status?: Prisma.EnumQueueStatusFilter<"QueueEntry"> | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
+  waitingSince?: Prisma.DateTimeFilter<"QueueEntry"> | Date | string
 }
 
 export type QueueEntryCreateWithoutSessionPlayerInput = {
@@ -559,6 +584,7 @@ export type QueueEntryCreateWithoutSessionPlayerInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
   session: Prisma.SessionCreateNestedOneWithoutQueueEntriesInput
 }
 
@@ -569,6 +595,7 @@ export type QueueEntryUncheckedCreateWithoutSessionPlayerInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
 }
 
 export type QueueEntryCreateOrConnectWithoutSessionPlayerInput = {
@@ -593,6 +620,7 @@ export type QueueEntryUpdateWithoutSessionPlayerInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   session?: Prisma.SessionUpdateOneRequiredWithoutQueueEntriesNestedInput
 }
 
@@ -603,6 +631,7 @@ export type QueueEntryUncheckedUpdateWithoutSessionPlayerInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type QueueEntryCreateManySessionInput = {
@@ -612,6 +641,7 @@ export type QueueEntryCreateManySessionInput = {
   status?: $Enums.QueueStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  waitingSince?: Date | string
 }
 
 export type QueueEntryUpdateWithoutSessionInput = {
@@ -620,6 +650,7 @@ export type QueueEntryUpdateWithoutSessionInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sessionPlayer?: Prisma.SessionPlayerUpdateOneRequiredWithoutQueueEntryNestedInput
 }
 
@@ -630,6 +661,7 @@ export type QueueEntryUncheckedUpdateWithoutSessionInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type QueueEntryUncheckedUpdateManyWithoutSessionInput = {
@@ -639,6 +671,7 @@ export type QueueEntryUncheckedUpdateManyWithoutSessionInput = {
   status?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  waitingSince?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -651,6 +684,7 @@ export type QueueEntrySelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  waitingSince?: boolean
   session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
   sessionPlayer?: boolean | Prisma.SessionPlayerDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["queueEntry"]>
@@ -663,6 +697,7 @@ export type QueueEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  waitingSince?: boolean
   session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
   sessionPlayer?: boolean | Prisma.SessionPlayerDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["queueEntry"]>
@@ -675,6 +710,7 @@ export type QueueEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  waitingSince?: boolean
   session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
   sessionPlayer?: boolean | Prisma.SessionPlayerDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["queueEntry"]>
@@ -687,9 +723,10 @@ export type QueueEntrySelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  waitingSince?: boolean
 }
 
-export type QueueEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sessionId" | "sessionPlayerId" | "position" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["queueEntry"]>
+export type QueueEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sessionId" | "sessionPlayerId" | "position" | "status" | "createdAt" | "updatedAt" | "waitingSince", ExtArgs["result"]["queueEntry"]>
 export type QueueEntryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
   sessionPlayer?: boolean | Prisma.SessionPlayerDefaultArgs<ExtArgs>
@@ -717,6 +754,7 @@ export type $QueueEntryPayload<ExtArgs extends runtime.Types.Extensions.Internal
     status: $Enums.QueueStatus
     createdAt: Date
     updatedAt: Date
+    waitingSince: Date
   }, ExtArgs["result"]["queueEntry"]>
   composites: {}
 }
@@ -1149,6 +1187,7 @@ export interface QueueEntryFieldRefs {
   readonly status: Prisma.FieldRef<"QueueEntry", 'QueueStatus'>
   readonly createdAt: Prisma.FieldRef<"QueueEntry", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"QueueEntry", 'DateTime'>
+  readonly waitingSince: Prisma.FieldRef<"QueueEntry", 'DateTime'>
 }
     
 

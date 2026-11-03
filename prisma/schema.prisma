@@ -97,6 +97,8 @@ model QueueEntry {
   session       Session       @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   sessionPlayer SessionPlayer @relation(fields: [sessionPlayerId], references: [id], onDelete: Cascade)
 
+  waitingSince DateTime @default(now())
+  
   @@unique([sessionId, position])
 }
 

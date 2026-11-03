@@ -1027,7 +1027,8 @@ export const QueueEntryScalarFieldEnum = {
   position: 'position',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  waitingSince: 'waitingSince'
 } as const
 
 export type QueueEntryScalarFieldEnum = (typeof QueueEntryScalarFieldEnum)[keyof typeof QueueEntryScalarFieldEnum]
